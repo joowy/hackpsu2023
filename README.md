@@ -1,1 +1,4 @@
-# hackpsu2023
+## InclusiScore: Empowering Financial Futures
+
+InclusiScore harnesses the power of AI and big data to revolutionize financial inclusion, making loans and financial services accessible to marginalized communities. Our innovative, alternative credit scoring system evaluates individuals without traditional credit histories, empowering them to build credit and break the cycle of poverty. Join us in redefining financial opportunities and creating a more equitable world with InclusiScore.
+Leverage AI and big data to develop alternative credit scoring models for individuals in marginalized communities who lack traditional credit histories. This would enable more people to access loans and other financial services, helping them build credit and escape the cycle of poverty.
