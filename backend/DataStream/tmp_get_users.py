@@ -37,7 +37,7 @@ OAUTH2.0
 user_name,user_email, user_id
 '''
 
-user_email = "david01rohweder"
+user_email = "cwaken"
 data={'credit_limit' : 2000.00, 'credit_score': 740, 'current_age': 22, 'current_balance': 0.00, 'current_income' : 0.00, 'education' : "Bachelor", 'num_dependants' : 0, 'number_of_cards' : 1}
 db.child('users').child(user_email).set(data)
 
