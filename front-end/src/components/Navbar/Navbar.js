@@ -19,6 +19,7 @@ import { GoogleAuthProvider, signInWithPopup, getAuth } from "firebase/auth";
 import { useState } from "react";
 import { Link as RouterLink, useNavigate } from "react-router-dom";
 import { app, auth, provider } from "../../firebaseConfig";
+import { CreditScoreProgressBar } from "../Account/CreditScoreProgressBar";
 const Links = ["Dashboard", "Projects", "Team"];
 
 const NavLink = ({ href, children }) => (
@@ -66,7 +67,7 @@ export const Navbar = () => {
             display={{ md: "none" }}
             onClick={isOpen ? onClose : onOpen}
           />
-          <HStack spacing={8} alignItems={"center"}>
+          <HStack  spacing={8} alignItems={"center"}>
             <Button
               as={RouterLink}
               to="/"
@@ -89,10 +90,13 @@ export const Navbar = () => {
           </HStack>
           <Spacer />
           {user ? (
-            <HStack spacing={4}>
+            <Button  as={RouterLink} to="/account" >
+  <HStack spacing={4}>
               <Text>{user.displayName}</Text>
               <Avatar src={user.photoURL} size="sm" />
             </HStack>
+            </Button >
+          
           ) : (
             <Button mr={2} color={"#333"} onClick={handleSignInWithGoogle}>
               Sign in with Google
