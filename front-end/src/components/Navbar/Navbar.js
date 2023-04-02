@@ -1,23 +1,23 @@
-import { ReactNode } from "react";
+import "../../firebaseConfig";
 import {
   Box,
-  Flex,
-  Avatar,
-  HStack,
-  Link,
-  IconButton,
   Button,
-  Menu,
-  MenuButton,
-  MenuList,
-  MenuItem,
-  MenuDivider,
-  useDisclosure,
-  useColorModeValue,
-  Stack,
+  Flex,
+  HStack,
+  IconButton,
   Image,
+  Link,
+  Spacer,
+  Stack,
+  Text,
+  useColorModeValue,
+  useDisclosure,
 } from "@chakra-ui/react";
-import { Link as RouterLink } from "react-router-dom";
+
+import { GoogleAuthProvider, signInWithPopup, getAuth } from "firebase/auth";
+import { useState } from "react";
+import { Link as RouterLink, useNavigate } from "react-router-dom";
+import { app, auth } from "../../firebaseConfig";
 const Links = ["Dashboard", "Projects", "Team"];
 
 const NavLink = (children) => (
@@ -37,6 +37,22 @@ const NavLink = (children) => (
 
 export const Navbar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const history = useNavigate();
+
+  const [error, setError] = useState(null);
+  const user = auth.currentUser;
+  const provider = new GoogleAuthProvider();
+
+  const handleSignInWithGoogle = async () => {
+    try {
+      const result = await signInWithPopup(auth, provider);
+      const { googleUser } = result;
+
+      history.push("/");
+    } catch (error) {
+      setError(error);
+    }
+  };
 
   return (
     <>
@@ -65,23 +81,14 @@ export const Navbar = () => {
               display={{ base: "none", md: "flex" }}
             ></HStack>
           </HStack>
-          <Flex alignItems={"center"}>
-            <Menu>
-              <MenuButton
-                as={Button}
-                rounded={"full"}
-                variant={"link"}
-                cursor={"pointer"}
-                minW={0}
-              ></MenuButton>
-              <MenuList>
-                <MenuItem>Link 1</MenuItem>
-                <MenuItem>Link 2</MenuItem>
-                <MenuDivider />
-                <MenuItem>Link 3</MenuItem>
-              </MenuList>
-            </Menu>
-          </Flex>
+          <Spacer />
+          {user ? (
+            <Text>{user.displayName}</Text>
+          ) : (
+            <Button mr={2} onClick={handleSignInWithGoogle}>
+              Sign in with Google
+            </Button>
+          )}
         </Flex>
 
         {isOpen ? (
