@@ -1,9 +1,10 @@
-import React from 'react';
-import './App.css';
-import { Switch, Route } from 'react-router-dom';
-import { ChakraProvider } from '@chakra-ui/react';
-import Hero from './components/Hero/Hero';
-import Form from './components/Form/Form';
+import React from "react";
+import "./App.css";
+import { Switch, Route } from "react-router-dom";
+import { ChakraProvider } from "@chakra-ui/react";
+import Hero from "./components/Hero/Hero";
+import Form from "./components/Form/Form";
+import Navbar from "./components/Navbar/Navbar";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       </header>
       <main>
         <ChakraProvider>
+          <Navbar />
           <Switch>
             <Route exact path="/" component={Hero} />
             <Route path="/form" component={Form} />

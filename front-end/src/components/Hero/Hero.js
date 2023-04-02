@@ -1,57 +1,61 @@
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import {
-    Box,
-    Heading,
-    Container,
-    Text,
-    Button,
-    Stack,
-    Icon,
-    useColorModeValue,
-    //createIcon,
-  } from '@chakra-ui/react';
+  Box,
+  Heading,
+  Container,
+  Text,
+  Button,
+  Stack,
+  Icon,
+  useColorModeValue,
+  AbsoluteCenter,
+  //createIcon,
+} from "@chakra-ui/react";
 
-  export default function CallToActionWithAnnotation() {
-    return (
-      <Container maxW={'3xl'}>
-        <Stack
-          as={Box}
-          textAlign={'center'}
-          spacing={{ base: 8, md: 14 }}
-          py={{ base: 20, md: 36 }}>
-          <Heading
-            fontWeight={600}
-            fontSize={{ base: '2xl', sm: '4xl', md: '6xl' }}
-            lineHeight={'110%'}>
-            Call to action
-            <br />
-            <Text as={'span'} color={'orange.400'}>
-              with annotation
-            </Text>
-          </Heading>
-          <Text color={'gray.500'} maxW={'3xl'}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua.
+export default function CallToActionWithAnnotation() {
+  return (
+    <Container maxW={"3xl"}>
+      <Stack
+        as={Box}
+        textAlign={"center"}
+        spacing={{ base: 8, md: 14 }}
+        py={{ base: 20, md: 36 }}
+      >
+        <Heading
+          fontWeight={600}
+          fontSize={{ base: "2xl", sm: "4xl", md: "6xl" }}
+          lineHeight={"110%"}
+        >
+          InclusiScore
+          <br />
+          <Text as={"span"} color={"orange.400"}>
+            Redefining Financial Opportunities for Marginalized Communities
           </Text>
-          <Stack spacing={6} direction={'row'}>
-          <Link to="/form">
+        </Heading>
+        <Box position="relative" h="100px">
+          <AbsoluteCenter>
+            <Stack flex={1} spacing={6} direction={"row"}>
+              <Link to="/form">
                 <Button
-                    rounded={'full'}
-                    px={6}
-                    colorScheme={'orange'}
-                    bg={'orange.400'}
-                    _hover={{ bg: 'orange.500' }}>
-                    Click here
+                  rounded={"full"}
+                  px={6}
+                  colorScheme={"orange"}
+                  bg={"orange.400"}
+                  _hover={{ bg: "orange.500" }}
+                >
+                  Click here
                 </Button>
-            </Link>
-            <Button rounded={'full'} px={6}>
-              Learn more
-            </Button>
-          </Stack>
-        </Stack>
-      </Container>
-    );
-  }
+              </Link>
+              <Button rounded={"full"} px={6}>
+                Learn more
+              </Button>
+            </Stack>
+          </AbsoluteCenter>
+        </Box>
+      </Stack>
+    </Container>
+  );
+}
 
 /*const Arrow = createIcon({
   displayName: 'Arrow',
