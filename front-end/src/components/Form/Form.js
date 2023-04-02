@@ -22,8 +22,58 @@ import { ref, set } from "firebase/database";
 const RegistrationForm = () => {
   const toast = useToast();
   const navigate = useNavigate();
-  const [show, setShow] = useState(false);
-  const handleClick = () => setShow(!show);
+  const [formState, setFormState] = useState({
+    credit_limit: "",
+    current_age: "",
+    current_balance: "",
+    current_income: "",
+    education: "",
+    num_dependants: "",
+    number_of_cards: "",
+  });
+
+  const handleChange = (event) => {
+    const { id, value } = event.target;
+    setFormState((prevState) => ({
+      ...prevState,
+      [id]: value,
+    }));
+  };
+
+  const handleSubmit = async () => {
+    const data = {
+      credit_limit: parseFloat(formState.credit_limit),
+      current_age: parseInt(formState.current_age),
+      current_balance: parseFloat(formState.current_balance),
+      current_income: parseFloat(formState.current_income),
+      education: formState.education,
+      num_dependants: parseInt(formState.num_dependants),
+      number_of_cards: parseInt(formState.number_of_cards),
+    };
+
+    try {
+      const user_email = "test";
+      await set(ref(db, `users/${user_email}`), data);
+      toast({
+        title: "Form submitted.",
+        description: "We've saved your form data.",
+        status: "success",
+        duration: 3000,
+        isClosable: true,
+      });
+      navigate("/success-page"); // Replace with the route to the success page
+    } catch (error) {
+      toast({
+        title: "Error submitting form.",
+        description:
+          "There was an error submitting your form data. Please try again.",
+        status: "error",
+        duration: 3000,
+        isClosable: true,
+      });
+      console.error("Error submitting form:", error);
+    }
+  };
 
   return (
     <>
@@ -35,42 +85,51 @@ const RegistrationForm = () => {
         <FormLabel htmlFor="credit-limit" fontWeight={"normal"}>
           Credit Limit
         </FormLabel>
-        <Input id="credit-limit" placeholder="Credit limit" />
+        <Input
+          id="credit_limit"
+          placeholder="Credit limit"
+          onChange={handleChange}
+        />
       </FormControl>
 
       <FormControl mt="2%">
-        <FormLabel htmlFor="credit-score" fontWeight={"normal"}>
-          Credit Score
-        </FormLabel>
-        <Input id="credit-score" placeholder="Credit score" />
-      </FormControl>
-
-      <FormControl mt="2%">
-        <FormLabel htmlFor="age" fontWeight={"normal"}>
+        <FormLabel htmlFor="current_age" fontWeight={"normal"}>
           Current Age
         </FormLabel>
-        <Input id="age" placeholder="Age" />
+        <Input id="current_age" placeholder="Age" onChange={handleChange} />
       </FormControl>
 
       <FormControl mt="2%">
-        <FormLabel htmlFor="current-balance" fontWeight={"normal"}>
+        <FormLabel htmlFor="current_balance" fontWeight={"normal"}>
           Current Balance
         </FormLabel>
-        <Input id="current-balance" placeholder="Balance" />
+        <Input
+          id="current_balance"
+          placeholder="Balance"
+          onChange={handleChange}
+        />
       </FormControl>
 
       <FormControl mt="2%">
-        <FormLabel htmlFor="current-income" fontWeight={"normal"}>
+        <FormLabel htmlFor="current_income" fontWeight={"normal"}>
           Current Income
         </FormLabel>
-        <Input id="current-income" placeholder="Income" />
+        <Input
+          id="current_income"
+          placeholder="Income"
+          onChange={handleChange}
+        />
       </FormControl>
 
       <FormControl mt="2%">
         <FormLabel htmlFor="education" fontWeight={"normal"}>
           Education
         </FormLabel>
-        <Select id="education" placeholder="Select education level">
+        <Select
+          id="education"
+          placeholder="Select education level"
+          onChange={handleChange}
+        >
           <option value="High School">High School</option>
           <option value="Some College">Some College</option>
           <option value="Bachelor">Bachelor</option>
@@ -80,17 +139,25 @@ const RegistrationForm = () => {
       </FormControl>
 
       <FormControl mt="2%">
-        <FormLabel htmlFor="number-dependants" fontWeight={"normal"}>
+        <FormLabel htmlFor="num_dependants" fontWeight={"normal"}>
           Number of Dependants
         </FormLabel>
-        <Input id="number-dependants" placeholder="Number of dependants" />
+        <Input
+          id="num_dependants"
+          placeholder="Number of dependants"
+          onChange={handleChange}
+        />
       </FormControl>
 
       <FormControl mt="2%">
-        <FormLabel htmlFor="number-cards" fontWeight={"normal"}>
+        <FormLabel htmlFor="number_of_cards" fontWeight={"normal"}>
           Number of Credit Cards
         </FormLabel>
-        <Input id="number-cards" placeholder="Number of Cards" />
+        <Input
+          id="number_of_cards"
+          placeholder="Number of Cards"
+          onChange={handleChange}
+        />
       </FormControl>
 
       <Flex mt="5%" justifyContent="space-between">
@@ -106,15 +173,7 @@ const RegistrationForm = () => {
           w="7rem"
           colorScheme="red"
           variant="solid"
-          onClick={() => {
-            toast({
-              title: "Account created.",
-              description: "We've created your account for you.",
-              status: "success",
-              duration: 3000,
-              isClosable: true,
-            });
-          }}
+          onClick={handleSubmit}
         >
           Submit
         </Button>
