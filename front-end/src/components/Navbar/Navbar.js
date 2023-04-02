@@ -17,7 +17,7 @@ import {
 import { GoogleAuthProvider, signInWithPopup, getAuth } from "firebase/auth";
 import { useState } from "react";
 import { Link as RouterLink, useNavigate } from "react-router-dom";
-import { app, auth } from "../../firebaseConfig";
+import { app, auth, provider } from "../../firebaseConfig";
 const Links = ["Dashboard", "Projects", "Team"];
 
 const NavLink = (children) => (
@@ -40,9 +40,7 @@ export const Navbar = () => {
   const history = useNavigate();
 
   const [error, setError] = useState(null);
-  const provider = new GoogleAuthProvider();
   const user = auth.currentUser;
-
   const handleSignInWithGoogle = async () => {
     try {
       const result = await signInWithPopup(auth, provider);

@@ -16,7 +16,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import { useToast } from "@chakra-ui/react";
 
-import { db } from "../../firebaseConfig";
+import { auth, db } from "../../firebaseConfig";
 import { ref, set } from "firebase/database";
 
 const RegistrationForm = () => {
@@ -52,8 +52,9 @@ const RegistrationForm = () => {
     };
 
     try {
-      const user_email = "test";
-      await set(ref(db, `users/${user_email}`), data);
+      const user_email_before = auth.currentUser.email.indexOf("@");
+      const emailString = auth.currentUser.email.slice(0, user_email_before);
+      await set(ref(db, `users/${emailString}`), data);
       toast({
         title: "Form submitted.",
         description: "We've saved your form data.",
@@ -61,7 +62,7 @@ const RegistrationForm = () => {
         duration: 3000,
         isClosable: true,
       });
-      navigate("/success-page"); // Replace with the route to the success page
+      navigate("/account");
     } catch (error) {
       toast({
         title: "Error submitting form.",
