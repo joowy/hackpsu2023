@@ -172,7 +172,7 @@ const RegistrationForm = () => {
         </Button>
         <Button
           w="7rem"
-          colorScheme="red"
+          colorScheme="teal"
           variant="solid"
           onClick={handleSubmit}
         >
@@ -194,6 +194,8 @@ export default function Form() {
         p={6}
         m="10px auto"
         as="form"
+        marginTop="7rem"
+        marginBottom="3rem"
       >
         <RegistrationForm />
       </Box>
