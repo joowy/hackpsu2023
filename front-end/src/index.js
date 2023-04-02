@@ -5,6 +5,8 @@ import { ChakraProvider } from "@chakra-ui/react";
 import "./index.css";
 import Hero from "./components/Hero/Hero";
 import Form from "./components/Form/Form";
+import Features from "./components/Features/Features.js";
+import Footer from "./components/Footer/Footer.js";
 import { Navbar } from "./components/Navbar/Navbar";
 import "firebase/auth";
 import db from "./firebaseConfig";
@@ -16,10 +18,12 @@ ReactDOM.render(
     <ChakraProvider>
       <Navbar />
       <Routes>
-        <Route path="/" element={<Hero />} />
+        <Route path="/" element={<> <Hero /> 
+          <Features /> </>} />
         <Route path="/form" element={<Form />} />
         <Route path="/account" element={<Account />} />
       </Routes>
+      <Footer />
     </ChakraProvider>
   </BrowserRouter>,
   rootElement
