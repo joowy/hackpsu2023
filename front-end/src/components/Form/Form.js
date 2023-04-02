@@ -10,10 +10,14 @@ import {
   FormHelperText,
   InputRightElement,
   InputGroup,
+  Select,
 } from '@chakra-ui/react';
 
 import { useNavigate } from 'react-router-dom';
 import { useToast } from '@chakra-ui/react';
+
+import db from '../../firebaseConfig'
+import { ref, set } from 'firebase/database';
 
 const RegistrationForm = () => {
   const toast = useToast();
@@ -24,48 +28,71 @@ const RegistrationForm = () => {
   return (
     <>
       <Heading w="100%" textAlign={'center'} fontWeight="normal" mb="2%">
-        User Registration
+        User Information
       </Heading>
-      <Flex>
-        <FormControl mr="5%">
-          <FormLabel htmlFor="first-name" fontWeight={'normal'}>
-            First name
-          </FormLabel>
-          <Input id="first-name" placeholder="First name" />
-        </FormControl>
+      
+      <FormControl mr="5%">
+        <FormLabel htmlFor="credit-limit" fontWeight={'normal'}>
+          Credit Limit
+        </FormLabel>
+        <Input id="credit-limit" placeholder="Credit limit" />
+      </FormControl>
 
-        <FormControl>
-          <FormLabel htmlFor="last-name" fontWeight={'normal'}>
-            Last name
-          </FormLabel>
-          <Input id="last-name" placeholder="First name" />
-        </FormControl>
-      </Flex>
       <FormControl mt="2%">
-        <FormLabel htmlFor="email" fontWeight={'normal'}>
-          Email address
+        <FormLabel htmlFor="credit-score" fontWeight={'normal'}>
+          Credit Score
         </FormLabel>
-        <Input id="email" type="email" />
-        <FormHelperText>We'll never share your email.</FormHelperText>
+        <Input id="credit-score" placeholder="Credit score" />
+      </FormControl>
+      
+      <FormControl mt="2%">
+        <FormLabel htmlFor="age" fontWeight={'normal'}>
+          Current Age
+        </FormLabel>
+        <Input id="age" placeholder="Age" />
       </FormControl>
 
-      <FormControl>
-        <FormLabel htmlFor="password" fontWeight={'normal'} mt="2%">
-          Password
+      <FormControl mt="2%">
+        <FormLabel htmlFor="current-balance" fontWeight={'normal'}>
+          Current Balance
         </FormLabel>
-        <InputGroup size="md">
-          <Input
-            pr="4.5rem"
-            type={show ? 'text' : 'password'}
-            placeholder="Enter password"
-          />
-          <InputRightElement width="4.5rem">
-            <Button h="1.75rem" size="sm" onClick={handleClick}>
-              {show ? 'Hide' : 'Show'}
-            </Button>
-          </InputRightElement>
-        </InputGroup>
+        <Input id="current-balance" placeholder="Balance" />
       </FormControl>
+      
+      <FormControl mt="2%">
+        <FormLabel htmlFor="current-income" fontWeight={'normal'}>
+          Current Income
+        </FormLabel>
+        <Input id="current-income" placeholder="Income" />
+      </FormControl>
+
+      <FormControl mt="2%">
+        <FormLabel htmlFor="education" fontWeight={'normal'}>
+          Education
+        </FormLabel>
+        <Select id="education" placeholder="Select education level">
+          <option value="High School">High School</option>
+          <option value="Some College">Some College</option>
+          <option value="Bachelor">Bachelor</option>
+          <option value="Master">Master</option>
+          <option value="PhD">PhD</option>
+        </Select>
+      </FormControl>
+
+      <FormControl mt="2%">
+        <FormLabel htmlFor="number-dependants" fontWeight={'normal'}>
+          Number of Dependants
+        </FormLabel>
+        <Input id="number-dependants" placeholder="Number of dependants" />
+      </FormControl>
+
+      <FormControl mt="2%">
+        <FormLabel htmlFor="number-cards" fontWeight={'normal'}>
+          Number of Credit Cards
+        </FormLabel>
+        <Input id="number-cards" placeholder="Number of Cards" />
+      </FormControl>
+
       <Flex mt="5%" justifyContent="space-between">
         <Button
           colorScheme="teal"
