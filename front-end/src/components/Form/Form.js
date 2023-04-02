@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import {
   Box,
   Button,
@@ -11,13 +11,13 @@ import {
   InputRightElement,
   InputGroup,
   Select,
-} from '@chakra-ui/react';
+} from "@chakra-ui/react";
 
-import { useNavigate } from 'react-router-dom';
-import { useToast } from '@chakra-ui/react';
+import { useNavigate } from "react-router-dom";
+import { useToast } from "@chakra-ui/react";
 
-import db from '../../firebaseConfig'
-import { ref, set } from 'firebase/database';
+import { db } from "../../firebaseConfig";
+import { ref, set } from "firebase/database";
 
 const RegistrationForm = () => {
   const toast = useToast();
@@ -27,47 +27,47 @@ const RegistrationForm = () => {
 
   return (
     <>
-      <Heading w="100%" textAlign={'center'} fontWeight="normal" mb="2%">
+      <Heading w="100%" textAlign={"center"} fontWeight="normal" mb="2%">
         User Information
       </Heading>
-      
+
       <FormControl mr="5%">
-        <FormLabel htmlFor="credit-limit" fontWeight={'normal'}>
+        <FormLabel htmlFor="credit-limit" fontWeight={"normal"}>
           Credit Limit
         </FormLabel>
         <Input id="credit-limit" placeholder="Credit limit" />
       </FormControl>
 
       <FormControl mt="2%">
-        <FormLabel htmlFor="credit-score" fontWeight={'normal'}>
+        <FormLabel htmlFor="credit-score" fontWeight={"normal"}>
           Credit Score
         </FormLabel>
         <Input id="credit-score" placeholder="Credit score" />
       </FormControl>
-      
+
       <FormControl mt="2%">
-        <FormLabel htmlFor="age" fontWeight={'normal'}>
+        <FormLabel htmlFor="age" fontWeight={"normal"}>
           Current Age
         </FormLabel>
         <Input id="age" placeholder="Age" />
       </FormControl>
 
       <FormControl mt="2%">
-        <FormLabel htmlFor="current-balance" fontWeight={'normal'}>
+        <FormLabel htmlFor="current-balance" fontWeight={"normal"}>
           Current Balance
         </FormLabel>
         <Input id="current-balance" placeholder="Balance" />
       </FormControl>
-      
+
       <FormControl mt="2%">
-        <FormLabel htmlFor="current-income" fontWeight={'normal'}>
+        <FormLabel htmlFor="current-income" fontWeight={"normal"}>
           Current Income
         </FormLabel>
         <Input id="current-income" placeholder="Income" />
       </FormControl>
 
       <FormControl mt="2%">
-        <FormLabel htmlFor="education" fontWeight={'normal'}>
+        <FormLabel htmlFor="education" fontWeight={"normal"}>
           Education
         </FormLabel>
         <Select id="education" placeholder="Select education level">
@@ -80,14 +80,14 @@ const RegistrationForm = () => {
       </FormControl>
 
       <FormControl mt="2%">
-        <FormLabel htmlFor="number-dependants" fontWeight={'normal'}>
+        <FormLabel htmlFor="number-dependants" fontWeight={"normal"}>
           Number of Dependants
         </FormLabel>
         <Input id="number-dependants" placeholder="Number of dependants" />
       </FormControl>
 
       <FormControl mt="2%">
-        <FormLabel htmlFor="number-cards" fontWeight={'normal'}>
+        <FormLabel htmlFor="number-cards" fontWeight={"normal"}>
           Number of Credit Cards
         </FormLabel>
         <Input id="number-cards" placeholder="Number of Cards" />
@@ -108,9 +108,9 @@ const RegistrationForm = () => {
           variant="solid"
           onClick={() => {
             toast({
-              title: 'Account created.',
+              title: "Account created.",
               description: "We've created your account for you.",
-              status: 'success',
+              status: "success",
               duration: 3000,
               isClosable: true,
             });

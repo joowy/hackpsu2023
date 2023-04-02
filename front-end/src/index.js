@@ -8,7 +8,7 @@ import Form from "./components/Form/Form";
 import { Navbar } from "./components/Navbar/Navbar";
 import "firebase/auth";
 import db from "./firebaseConfig";
-
+import { Account } from "./components/Account/Account";
 const rootElement = document.getElementById("root");
 
 ReactDOM.render(
@@ -18,6 +18,7 @@ ReactDOM.render(
       <Routes>
         <Route path="/" element={<Hero />} />
         <Route path="/form" element={<Form />} />
+        <Route path="/account" element={<Account />} />
       </Routes>
     </ChakraProvider>
   </BrowserRouter>,
