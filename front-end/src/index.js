@@ -6,6 +6,8 @@ import "./index.css";
 import Hero from "./components/Hero/Hero";
 import Form from "./components/Form/Form";
 import { Navbar } from "./components/Navbar/Navbar";
+import firebase from "firebase/app";
+import "firebase/auth";
 
 const rootElement = document.getElementById("root");
 
