@@ -18,6 +18,7 @@ import { useToast } from "@chakra-ui/react";
 
 import { auth, db } from "../../firebaseConfig";
 import { ref, set } from "firebase/database";
+import FileDropIn from "./FileDropIn";
 
 const RegistrationForm = () => {
   const toast = useToast();
@@ -160,6 +161,7 @@ const RegistrationForm = () => {
           onChange={handleChange}
         />
       </FormControl>
+      <FileDropIn  />
 
       <Flex mt="5%" justifyContent="space-between">
         <Button
