@@ -38,7 +38,7 @@ user_name,user_email, user_id
 '''
 
 user_email = "david"
-data={'credit_limit' : 2000.00, 'current_age': 22, 'current_balance': 0.00, 'current_income' : 0.00, 'education' : "Bachelor", 'num_dependants' : 0, 'number_of_cards' : 1}
+data={'credit_limit' : 2000.00, 'current_age': 22, 'current_balance': 0.00, 'current_income' : 160000, 'education' : "PhD", 'num_dependants' : 0, 'number_of_cards' : 1}
 db.child('users').child(user_email).set(data)
 
 
