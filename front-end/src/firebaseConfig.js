@@ -1,6 +1,11 @@
 import { initializeApp } from "firebase/app";
 import "firebase/auth";
-import { GoogleAuthProvider, getAuth } from "firebase/auth";
+import {
+  GoogleAuthProvider,
+  getAuth,
+  setPersistence,
+  browserLocalPersistence,
+} from "firebase/auth";
 import { getDatabase } from "firebase/database";
 export const provider = new GoogleAuthProvider();
 

@@ -10,7 +10,7 @@ import Footer from "./components/Footer/Footer.js";
 import { Navbar } from "./components/Navbar/Navbar";
 import "firebase/auth";
 import db from "./firebaseConfig";
-
+import { Account } from "./components/Account/Account";
 const rootElement = document.getElementById("root");
 
 ReactDOM.render(
@@ -21,6 +21,7 @@ ReactDOM.render(
         <Route path="/" element={<> <Hero /> 
           <Features /> </>} />
         <Route path="/form" element={<Form />} />
+        <Route path="/account" element={<Account />} />
       </Routes>
       <Footer />
     </ChakraProvider>
